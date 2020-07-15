@@ -21,8 +21,8 @@ namespace SuperHero.Controllers
         // GET: Heroes
         public ActionResult Index()
         {
-            //var heroes =
-            return View();
+            var heroes = _context.Heroes.ToList();
+            return View(heroes);
         }
 
         // GET: Heroes/Details/5
