@@ -28,8 +28,8 @@ namespace SuperHero.Controllers
         // GET: Heroes/Details/5
         public ActionResult Details(int id)
         {
-
-            return View();
+            var hero = _context.Heroes.Where(i => i.Id == id).FirstOrDefault();
+            return View(hero);
         }
 
         // GET: Heroes/Create
@@ -58,43 +58,48 @@ namespace SuperHero.Controllers
         // GET: Heroes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var hero = _context.Heroes.Where(i => i.Id == id).FirstOrDefault();
+            return View(hero);
         }
 
         // POST: Heroes/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+       public ActionResult Edit(int id, IFormCollection collection)
         {
+            var hero = _context.Heroes.Where(i => i.Id == id).FirstOrDefault();
             try
             {
-                
+                _context.Heroes.Update(hero);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(hero);
             }
         }
 
         // GET: Heroes/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var heroes = _context.Heroes.Where(i => i.Id == id).FirstOrDefault();
+            return View(heroes);
         }
 
         // POST: Heroes/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
+            var hero = _context.Heroes.Where(i => i.Id == id).FirstOrDefault();
             try
             {
+                _context.Heroes.Remove(hero);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(hero);
             }
         }
     }
