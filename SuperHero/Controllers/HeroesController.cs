@@ -64,9 +64,9 @@ namespace SuperHero.Controllers
 
         // POST: Heroes/Edit/5
         [HttpPost]
-       public ActionResult Edit(int id, IFormCollection collection)
+       public ActionResult Edit(Hero hero)
         {
-            var hero = _context.Heroes.Where(i => i.Id == id).FirstOrDefault();
+            //var hero = _context.Heroes.Where(i => i.Id == id).FirstOrDefault();
             try
             {
                 _context.Heroes.Update(hero);
