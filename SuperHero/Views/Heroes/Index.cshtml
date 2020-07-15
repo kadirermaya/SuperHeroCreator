@@ -5,13 +5,14 @@
 }
 
 <h1>Index</h1>
+<h2>Super Heroes</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="table-active">
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -30,7 +31,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table-active">
 @foreach (var item in Model) {
         <tr>
             <td>
